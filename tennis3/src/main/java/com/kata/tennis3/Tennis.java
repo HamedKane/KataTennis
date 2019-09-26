@@ -33,7 +33,7 @@ public class Tennis {
 			  case 3:
 				  	 manageGame(p1,p2);
 				  	 manageSet(p1,p2);
-				  	 
+				  	 manageMatch(p1,p2);
 				  	 p1.setCurrentGameStatus(0);
 				  	 p2.setCurrentGameStatus(0);
 				break;
@@ -47,7 +47,7 @@ public class Tennis {
 			  case 5:
 				  	 manageGame(p1,p2);
 				  	 manageSet(p1,p2);
-				  	 
+				  	 manageMatch(p1,p2);
 				  	 p1.setCurrentGameStatus(0);
 				  	 p2.setCurrentGameStatus(0);
 				break;
@@ -71,7 +71,7 @@ public class Tennis {
 			  case 3:
 				     manageGame(p1,p2);
 				     manageSet(p1,p2);
-				     
+				     manageMatch(p1,p2);
 				  	 p1.setCurrentGameStatus(0);
 				  	 p2.setCurrentGameStatus(0);
 				break;
@@ -85,7 +85,7 @@ public class Tennis {
 			  case 5:
 				     manageGame(p1,p2);
 				     manageSet(p1,p2);
-				     
+				     manageMatch(p1,p2);
 				  	 p2.setCurrentGameStatus(0);
 				  	 p1.setCurrentGameStatus(0);
 				break;

@@ -6,10 +6,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.kata.tennis2.CurrentService;
-import com.kata.tennis2.IParameters;
-import com.kata.tennis2.Player;
-import com.kata.tennis2.Tennis;
+import com.kata.tennis3.CurrentService;
+import com.kata.tennis3.IParameters;
+import com.kata.tennis3.Player;
+import com.kata.tennis3.Tennis;
 
 import junit.framework.TestCase;
 
@@ -94,5 +94,17 @@ public class TennisTest extends TestCase {
 		assertEquals(IParameters.GAME_STATUS_DEUCE,p2.getCurrentGameStatus());
 	}
 	
+	@Test
+	public void testManageGames() {
+		Player p1 = new Player("Playeur1", CurrentService.W.toString(), IParameters.GAME_STATUS_40
+				, 3, null, 0, false, "In progress");
+		
+		Player p2 = new Player("Playeur2", CurrentService.L.toString(), IParameters.GAME_STATUS_15
+				, 1, null, 0, false, "In progress");
+		
+		Tennis tennis = new Tennis();
+		tennis.manageGame(p1, p2);
+		assertEquals(4,p1.getNbrGame());
+	}
 
 }

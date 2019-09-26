@@ -160,5 +160,15 @@ public class Tennis {
 		
 	}
 	
+	public void manageMatch(Player p1, Player p2) {		
+		if(p1.getNbrSet() == 3) {
+			p1.setMatchWinner(true);
+			p1.setMatchStatus(p1.getName() + " wins.");
+		}else if(p2.getNbrSet() == 3) {
+			p2.setMatchWinner(true);
+			p1.setMatchStatus(p2.getName() + " wins.");
+		}		
+	}
+	
 }
 

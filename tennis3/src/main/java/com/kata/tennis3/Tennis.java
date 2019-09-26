@@ -31,7 +31,7 @@ public class Tennis {
 				  }
 				break;
 			  case 3:
-				  	 
+				  	 manageGame(p1,p2);
 				  	 
 				  	 p1.setCurrentGameStatus(0);
 				  	 p2.setCurrentGameStatus(0);
@@ -44,7 +44,7 @@ public class Tennis {
 				  	}
 				break;
 			  case 5:
-				     
+				  	 manageGame(p1,p2);
 				     
 				  	 p1.setCurrentGameStatus(0);
 				  	 p2.setCurrentGameStatus(0);
@@ -67,7 +67,7 @@ public class Tennis {
 				  }
 				break;
 			  case 3:
-
+				     manageGame(p1,p2);
 				     
 				     
 				  	 p1.setCurrentGameStatus(0);
@@ -81,7 +81,7 @@ public class Tennis {
 				  	}
 				break;
 			  case 5:
-
+				     manageGame(p1,p2);
 
 				     
 				  	 p2.setCurrentGameStatus(0);
@@ -92,7 +92,13 @@ public class Tennis {
 		}
 	}
 	
-	
+	public void manageGame(Player p1, Player p2) {		
+		if(p1.getCurrentService().equals(CurrentService.W.toString())) {
+			p1.setNbrGame(p1.getNbrGame() + 1);
+		}else if(p2.getCurrentService().equals(CurrentService.W.toString())) {
+			p2.setNbrGame(p2.getNbrGame() + 1);
+		}		
+	}
 	
 }
 

@@ -106,5 +106,37 @@ public class TennisTest extends TestCase {
 		tennis.manageGame(p1, p2);
 		assertEquals(4,p1.getNbrGame());
 	}
+	
+	@Test
+	public void testManageSets() {
+		
+		List<Integer>listScoreGame1 = new ArrayList();
+		List<Integer>listScoreGame2 = new ArrayList();
+		
+		Player p1 = new Player("Playeur1", CurrentService.W.toString(), IParameters.GAME_STATUS_40
+				, 6, listScoreGame1, 1, false, "In progress");
+		
+		Player p2 = new Player("Playeur2", CurrentService.L.toString(), IParameters.GAME_STATUS_15
+				, 1, listScoreGame2, 0, false, "In progress");
+		
+		Tennis tennis = new Tennis();
+		tennis.manageSet(p1, p2);
+		assertEquals(2,p1.getNbrSet());
+	}
+	
+	@Test
+	public void testManageMatchs() {
+		
+		Player p1 = new Player("Playeur1", CurrentService.W.toString(), IParameters.GAME_STATUS_40
+				, 0, null, 3, false, "In progress");
+		
+		Player p2 = new Player("Playeur2", CurrentService.L.toString(), IParameters.GAME_STATUS_15
+				, 0, null, 0, false, "In progress");
+		
+		Tennis tennis = new Tennis();
+		tennis.manageMatch(p1, p2);
+		assertEquals(true,p1.isMatchWinner());
+		assertEquals(false,p2.isMatchWinner());
+	}
 
 }

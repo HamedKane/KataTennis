@@ -32,6 +32,7 @@ public class Tennis {
 				break;
 			  case 3:
 				  	 manageGame(p1,p2);
+				  	 manageSet(p1,p2);
 				  	 
 				  	 p1.setCurrentGameStatus(0);
 				  	 p2.setCurrentGameStatus(0);
@@ -45,7 +46,8 @@ public class Tennis {
 				break;
 			  case 5:
 				  	 manageGame(p1,p2);
-				     
+				  	 manageSet(p1,p2);
+				  	 
 				  	 p1.setCurrentGameStatus(0);
 				  	 p2.setCurrentGameStatus(0);
 				break;
@@ -68,7 +70,7 @@ public class Tennis {
 				break;
 			  case 3:
 				     manageGame(p1,p2);
-				     
+				     manageSet(p1,p2);
 				     
 				  	 p1.setCurrentGameStatus(0);
 				  	 p2.setCurrentGameStatus(0);
@@ -82,7 +84,7 @@ public class Tennis {
 				break;
 			  case 5:
 				     manageGame(p1,p2);
-
+				     manageSet(p1,p2);
 				     
 				  	 p2.setCurrentGameStatus(0);
 				  	 p1.setCurrentGameStatus(0);
@@ -98,6 +100,64 @@ public class Tennis {
 		}else if(p2.getCurrentService().equals(CurrentService.W.toString())) {
 			p2.setNbrGame(p2.getNbrGame() + 1);
 		}		
+	}
+	
+	public void manageSet(Player p1, Player p2) {	
+		
+		Tennis tennis = new Tennis();
+
+		if(p1.getNbrGame() == 6 && p2.getNbrGame() == 6) {				
+			newServiceTieBreak(	p1, 	p2, tennis);	
+		}else{					
+			if((p1.getNbrGame() > p2.getNbrGame()) && (p1.getNbrGame()>=6) && (p1.getNbrGame()-p2.getNbrGame()>=2)) {
+				p1.setNbrSet(p1.getNbrSet() + 1);
+				
+				p1.getListScoreGame().add(p1.getNbrGame());
+				p1.setNbrGame(0);			
+				p2.getListScoreGame().add(p2.getNbrGame());
+				p2.setNbrGame(0);
+				
+			}else if((p2.getNbrGame() > p1.getNbrGame()) && (p2.getNbrGame()>=6) && (p2.getNbrGame()-p1.getNbrGame()>=2)) {
+				p2.setNbrSet(p2.getNbrSet() + 1);
+				
+				p1.getListScoreGame().add(p1.getNbrGame());
+				p1.setNbrGame(0);			
+				p2.getListScoreGame().add(p2.getNbrGame());
+				p2.setNbrGame(0);
+			}
+			
+		}
+	}
+	
+	
+	public void newServiceTieBreak(	Player p1, 	Player p2, Tennis tennis) {
+		
+		String isWinner;
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println( "!!!!!!!!!!!!! New TIE-BREAK service  !!!!!!!!!!!!!!!"  );
+		System.out.println( p1.getName() +" is the TIE-BREAK service winner?  (Y/N) : "  );
+		isWinner = sc.nextLine();        		
+	
+		if(isWinner.equals("Y")) {
+			p1.setNbrGame(p1.getNbrGame() + 1);
+			p1.setNbrSet(p1.getNbrSet() + 1);
+			
+			p1.getListScoreGame().add(p1.getNbrGame());
+			p1.setNbrGame(0);			
+			p2.getListScoreGame().add(p2.getNbrGame());
+			p2.setNbrGame(0);
+		}else {
+			p2.setNbrGame(p2.getNbrGame() + 1);
+			p2.setNbrSet(p2.getNbrSet() + 1);
+			p1.getListScoreGame().add(p1.getNbrGame());
+			p1.setNbrGame(0);			
+			p2.getListScoreGame().add(p2.getNbrGame());
+			p2.setNbrGame(0);
+		}
+		
+		System.out.println( "!!!!!!!!!!!!! End TIE-BREAK service  !!!!!!!!!!!!!!!"  );
+		
 	}
 	
 }

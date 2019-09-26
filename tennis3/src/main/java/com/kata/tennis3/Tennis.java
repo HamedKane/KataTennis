@@ -170,5 +170,42 @@ public class Tennis {
 		}		
 	}
 	
+	void showMessage(IMessage message) {
+		// TODO Auto-generated method stub
+		System.out.println("---------------Service details------------------");
+		message.ShowResumeMessage();
+		System.out.println("------------------------------------------------");
+	}
+	
+	public void newService(	Player p1, 	Player p2, Tennis tennis) {
+		
+		String isWinner;
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println( "=> New service <="  );
+		System.out.println( p1.getName() +" is the service winner?  (Y/N) : "  );
+		isWinner = sc.nextLine();        		
+	
+		if(isWinner.equals("Y")) {
+			p1.setCurrentService(CurrentService.W.toString());
+			p2.setCurrentService(CurrentService.L.toString());
+		}else {
+			p1.setCurrentService(CurrentService.L.toString());
+			p2.setCurrentService(CurrentService.W.toString());			
+		}
+		tennis.changeStatusStandard(p1, p2);
+	
+		//showResume
+		tennis.showMessage(()-> { 	
+			System.out.println("Player 1 : " + p1.getName());
+			System.out.println("Player 2 : " + p2.getName());
+			System.out.println("Score : " + IParameters.showScore(p1, p2));
+			if(p1.getMatchStatus().equals("In progress")){ 
+				System.out.println("Current game status : " + IParameters.convertStatusGameToString(p1.getCurrentGameStatus()) + "-" + IParameters.convertStatusGameToString(p2.getCurrentGameStatus()));
+			}			  	
+			System.out.println("Match status: " + p1.getMatchStatus());
+		});
+	}
+	
 }
 

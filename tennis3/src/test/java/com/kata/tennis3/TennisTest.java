@@ -138,5 +138,39 @@ public class TennisTest extends TestCase {
 		assertEquals(true,p1.isMatchWinner());
 		assertEquals(false,p2.isMatchWinner());
 	}
+	
+	
+	@Test
+	public void testConvertStatusGameToString(){	
+		assertEquals("0",IParameters.convertStatusGameToString(0));
+		assertEquals("15",IParameters.convertStatusGameToString(1));
+		assertEquals("30",IParameters.convertStatusGameToString(2));
+		assertEquals("40",IParameters.convertStatusGameToString(3));
+		assertEquals("DEUCE",IParameters.convertStatusGameToString(4));
+		assertEquals("ADVANTAGE",IParameters.convertStatusGameToString(5));		
+	}
+	
+	@Test
+	public void testShowScore(){	
+		
+		List<Integer>listP1 = new ArrayList<>();
+		List<Integer>listP2 = new ArrayList<>();
+		listP1.add(6);
+		listP1.add(7);
+		listP1.add(1);
+		
+		listP2.add(1);
+		listP2.add(5);
+		listP2.add(4);
+		
+		Player p1 = new Player("Playeur1", CurrentService.W.toString(), IParameters.GAME_STATUS_40
+				, 0, listP1, 3, false, "In progress");
+		
+		Player p2 = new Player("Playeur2", CurrentService.L.toString(), IParameters.GAME_STATUS_15
+				, 0, listP2, 0, false, "In progress");
+				
+		assertEquals("(6-1)(7-5)(1-4)(0-0)",IParameters.showScore(p1, p2));
+		
+	}
 
 }
